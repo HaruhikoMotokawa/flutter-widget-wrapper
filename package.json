@@ -9,15 +9,26 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onLanguage:dart"
+  ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "flutter-widget-wrapper.helloWorld",
-        "title": "Hello World"
+        "command": "flutterWidgetWrapper.wrapWithWidget",
+        "title": "Wrap with Widget"
       }
-    ]
+    ],
+    "menus": {
+      "editor/codeActions": [
+        {
+          "command": "flutterWidgetWrapper.wrapWithWidget",
+          "when": "editorLangId == dart",
+          "group": "1_modification"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run package",

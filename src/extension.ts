@@ -1,26 +1,64 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import { CodeActionWrap } from './code-actions';
+import { dartCodeExtensionIdentifier, flutterExtensionIdentifier } from './constants';
+import { wrapWith } from './utils';
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
-export function activate(context: vscode.ExtensionContext) {
+const DART_MODE = { language: "dart", scheme: "file" };
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "flutter-widget-wrapper" is now active!');
+// 拡張機能のエントリーポイント
+export async function activate(context: vscode.ExtensionContext): Promise<void> {
+	// Dart拡張機能がインストールされているか確認
+	const dartExt = vscode.extensions.getExtension(dartCodeExtensionIdentifier);
+	if (!dartExt) {
+		vscode.window.showErrorMessage("The Dart extension is not installed. This extension cannot be activated.");
+		return;
+	}
+	await dartExt.activate();
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	const disposable = vscode.commands.registerCommand('flutter-widget-wrapper.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from Flutter Widget Wrapper!');
-	});
+	// Flutter拡張機能がインストールされているか確認
+	const flutterExt = vscode.extensions.getExtension(flutterExtensionIdentifier);
+	if (!flutterExt) {
+		vscode.window.showErrorMessage("The Flutter extension is not installed. This extension cannot be activated.");
+		return;
+	}
+	await flutterExt.activate();
 
-	context.subscriptions.push(disposable);
+	// 固定されたラップコマンドを登録
+	registerWrappers(context);
 }
 
-// This method is called when your extension is deactivated
-export function deactivate() {}
+// 固定されたラップコマンドを登録
+function registerWrappers(context: vscode.ExtensionContext) {
+	// 固定されたラップの定義
+	const wraps: CodeWrap[] = [
+		{
+			commandId: "wrapWith.",
+			title: "Wrap with Expanded",
+			command: () => wrapWith(selectedText => `Expanded(\n  child: ${selectedText},\n)`),
+		},
+	];
+
+	// コマンドを登録
+	const subscriptions = wraps.map(wrap =>
+		vscode.commands.registerCommand(wrap.commandId, wrap.command)
+	);
+
+	// CodeActionProviderとしても登録
+	subscriptions.push(
+		vscode.languages.registerCodeActionsProvider(DART_MODE, new CodeActionWrap(wraps))
+	);
+
+	// 拡張機能が無効化されたときにコマンドを解放
+	context.subscriptions.push(...subscriptions);
+}
+
+
+
+export function deactivate() { }
+
+// 拡張機能の型定義
+export type CodeWrap = {
+	commandId: string;
+	title: string;
+	command: () => void;
+};
