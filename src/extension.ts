@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import { CodeActionWrap } from './code-actions';
+import { commands } from './commands';
 import { dartCodeExtensionIdentifier, flutterExtensionIdentifier } from './constants';
-import { wrapWith } from './utils';
 
 const DART_MODE = { language: "dart", scheme: "file" };
 
@@ -29,23 +29,14 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
 
 // 固定されたラップコマンドを登録
 function registerWrappers(context: vscode.ExtensionContext) {
-	// 固定されたラップの定義
-	const wraps: CodeWrap[] = [
-		{
-			commandId: "wrapWith.",
-			title: "Wrap with Expanded",
-			command: () => wrapWith(selectedText => `Expanded(\n  child: ${selectedText},\n)`),
-		},
-	];
-
 	// コマンドを登録
-	const subscriptions = wraps.map(wrap =>
+	const subscriptions = commands.map(wrap =>
 		vscode.commands.registerCommand(wrap.commandId, wrap.command)
 	);
 
-	// CodeActionProviderとしても登録
+	// CodeActionProviderとして登録
 	subscriptions.push(
-		vscode.languages.registerCodeActionsProvider(DART_MODE, new CodeActionWrap(wraps))
+		vscode.languages.registerCodeActionsProvider(DART_MODE, new CodeActionWrap(commands))
 	);
 
 	// 拡張機能が無効化されたときにコマンドを解放
