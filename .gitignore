@@ -1,0 +1,46 @@
+# Build output
+out/
+dist/
+
+# Dependencies
+node_modules/
+
+# VSCode Test folders
+.vscode-test/
+.vscode-test-web/
+
+# Ignore extension package
+*.vsix
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*.swo
+*.orig
+
+# Coverage and Cache
+coverage/
+.eslintcache
+.cache/
+
+# Environment variables
+.env
+.env.local
+.env.*
+
+# IDE specific files
+.idea/
+.vscode/settings.json
+.vscode/launch.json
