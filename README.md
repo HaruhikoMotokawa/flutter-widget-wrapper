@@ -1,71 +1,30 @@
-# flutter-widget-wrapper README
+# Flutter Widget Wrapper
 
-This is the README for your extension "flutter-widget-wrapper". After writing up a brief description, we recommend including the following sections.
-
+![Flutter Widget Wrapper Demo](assets/flutter_widget_wrapper.gif)
 ## Features
+- Wrap with common Flutter widgets: Simplify your workflow by quickly wrapping widgets with frequently used Flutter widgets such as:
+- Stack
+- Expanded
+- Flexible
+- ColoredBox
+- Align
+- ConstrainedBox
+- Code Actions Integration: Use the ⌘ + . (Mac) or Ctrl + . (Windows/Linux) shortcut to access the wrapper menu directly in the code actions menu.
+- Quick Pick Menu: Easily access all available wrap options through a quick pick menu (command palette).
+- Default Configurations: Each widget comes with sensible default values (e.g., Align defaults to Alignment.center, ColoredBox defaults to Colors.blue).
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+## How to Use
+1. Place your cursor inside a Flutter widget in your code.
+2. Press ⌘ + . (Mac) or Ctrl + . (Windows/Linux) to open the code actions menu.
+3. Select “Flutter Widget Wrapper” from the menu.
+4. Choose the desired widget to wrap with from the presented list.
 
-For example if there is an image subfolder under your extension project workspace:
+## Tips for Using ⌘ + . (Mac) or Ctrl + . (Windows/Linux)
+- To Remove a Widget:
+After pressing ⌘ + . or Ctrl + ., you can quickly jump to the “Remove Widget” action by typing R.
+- To Wrap with a Widget:
+Similarly, you can quickly jump to the “Wrap with Widget” options by typing W after opening the code actions menu.
 
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
-
-## Requirements
-
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+> [!NOTE]
+> This functionality is provided by the official Flutter Extension, not by this extension.
+>  However, it can be used seamlessly alongside this extension to improve your workflow.
