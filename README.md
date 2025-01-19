@@ -1,6 +1,6 @@
-# Flutter Widget Wrapper
+# Widget Wrapper
 
-![Flutter Widget Wrapper Demo](assets/flutter_widget_wrapper.gif)
+![Widget Wrapper Demo](assets/flutter_widget_wrapper.gif)
 ## Features
 - Wrap with common Flutter widgets: Simplify your workflow by quickly wrapping widgets with frequently used Flutter widgets such as:
 - Stack

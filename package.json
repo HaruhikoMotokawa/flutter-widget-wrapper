@@ -1,6 +1,6 @@
 {
-  "name": "flutter-widget-wrapper",
-  "displayName": "Flutter Widget Wrapper",
+  "name": "widget-wrapper",
+  "displayName": "Widget Wrapper",
   "description": "A Visual Studio Code extension for Flutter developers that lets you quickly wrap widgets with common Flutter widgets like Stack, Expanded, Flexible, ColoredBox, Align, and ConstrainedBox. Simplify your workflow and enhance productivity with a seamless code actions menu integration.",
   "version": "1.0.0",
   "engines": {
@@ -37,14 +37,14 @@
   "contributes": {
     "commands": [
       {
-        "command": "flutterWidgetWrapper.wrapWithWidget",
+        "command": "widgetWrapper.wrapWithWidget",
         "title": "Wrap with Widget"
       }
     ],
     "menus": {
       "editor/codeActions": [
         {
-          "command": "flutterWidgetWrapper.wrapWithWidget",
+          "command": "widgetWrapper.wrapWithWidget",
           "when": "editorLangId == dart",
           "group": "1_modification"
         }
