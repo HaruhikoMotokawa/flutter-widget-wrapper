@@ -1,6 +1,6 @@
 # Widget Wrapper
 
-![Widget Wrapper Demo](assets/widget_wrapper.gif)
+![Widget Wrapper Demo](https://github.com/user-attachments/assets/129ca2b7-364c-43c1-a902-8b5da5d28e0f)
 
 ## Features
 
